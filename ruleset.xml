@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<ruleset name="OpenSky">
+	<description>The OpenSky coding standard.</description>
+	
+	<rule ref="Generic.ControlStructures.InlineControlStructure"/>
+	<rule ref="Generic.Formatting.SpaceAfterCast"/>
+	<rule ref="Generic.Functions.CallTimePassByReference"/>
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
+	<rule ref="Generic.PHP.LowerCaseConstant"/>
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+	<rule ref="Squiz.Classes.ValidClassName"/>
+	<rule ref="Squiz.ControlStructures.ControlSignature"/>
+	<rule ref="Squiz.ControlStructures.ElseIfDeclaration"/>
+	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
+	<rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
+	<rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
+	<rule ref="Squiz.ControlStructures.SwitchDeclaration"/>
+	<rule ref="Squiz.NamingConventions.ValidVariableName"/>
+	<rule ref="Squiz.PHP.LowercasePHPFunctions"/>
+	<rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+	<rule ref="Squiz.Classes.ValidClassName"/>
+
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="100"/>
+			<property name="absoluteLineLimit" value="120"/>
+		</properties>
+	</rule>
+	<rule ref="Generic.Files.LineLength.TooLong">
+		<message>Consider breaking lines longer than %s characters; contains %s characters</message>
+	</rule>
+
+	<!-- I recommend adding the following rules to our coding standard -->
+	<!--
+		<rule ref="Generic.Formatting.MultipleStatementAlignment"/>
+		<rule ref="Squiz.Commenting.EmptyCatchComment"/>
+		<rule ref="Squiz.Scope.MemberVarScope"/>
+		<rule ref="Squiz.Scope.MethodScope"/>
+	-->
+
+	<!--
+		We currently have no sniffing for string best practices:
+		variable substitution, single- vs double-quoteness, etc.
+	-->
+
+	<!-- And these ones would be useful but appear to be broken in 5.3 -->
+	<!--
+		<rule ref="Squiz.Classes.ClassDeclaration"/>
+		<rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+	-->
+
+	<rule ref="Zend">
+		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
+		<exclude name="PEAR.Classes.ClassDeclaration"/>
+		<exclude name="PEAR.Functions.FunctionCallSignature"/>
+		<exclude name="PEAR.WhiteSpace.ScopeClosingBrace"/>
+		<exclude name="Zend.NamingConventions.ValidVariableName"/>
+		<exclude name="Zend.Debug.CodeAnalyzer"/>
+	</rule>
+
+</ruleset>
