@@ -1,13 +1,13 @@
 <?php
 
 /**
- * OpenSky_Sniffs_WhiteSpace_DiscourageFitzinatorSniff.
+ * Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff.
  *
  * Throws warnings if a file contains trailing whitespace.
  *
  * @author Justin Hileman <justin@shopopensky.com>
  */
-class OpenSky_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSniffer_Sniff
+class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSniffer_Sniff
 {
 
     /**

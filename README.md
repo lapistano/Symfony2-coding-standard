@@ -1,5 +1,5 @@
-OpenSky phpcs Coding Standard
-=============================
+Symfony2 PHP CodeSniffer Coding Standard
+========================================
 
 Installation
 ------------
@@ -12,15 +12,15 @@ Installation
 
        pear config-show | grep php_dir
 
-3. Copy, symlink or check out this repo to a folder called OpenSky inside the
+3. Copy, symlink or check out this repo to a folder called Symfony2 inside the
    phpcs `Standards` directory:
 
        cd /path/to/pear/PHP/CodeSniffer/Standards
-       git clone git@github.com:opensky/coding-standard.git OpenSky
+       git clone git://github.com/opensky/Symfony2-coding-standard.git Symfony2
 
-4. Set OpenSky as your default coding standard:
+4. Set Symfony2 as your default coding standard:
 
-       phpcs --config-set default_standard OpenSky
+       phpcs --config-set default_standard Symfony2
 
 5. ...
 
