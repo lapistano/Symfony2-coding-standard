@@ -2,6 +2,9 @@
 <ruleset name="Symfony2">
     <description>The Symfony2 coding standard.</description>
 
+    <!-- There should not be any code in the bundle Resources directory. -->
+    <exclude-pattern>*/Resources/*</exclude-pattern>
+
     <!--
 
     See the [documented coding standard](http://hile.mn/hdid1p)
