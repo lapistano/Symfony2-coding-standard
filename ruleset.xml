@@ -31,17 +31,13 @@
     <rule ref="Generic.Functions.CallTimePassByReference"/>
     <rule ref="Generic.PHP.LowerCaseConstant"/>
     <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
-    <rule ref="Squiz.Classes.ValidClassName"/>
     <rule ref="Squiz.ControlStructures.ControlSignature"/>
     <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
     <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
     <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
-    <rule ref="Squiz.ControlStructures.SwitchDeclaration"/>
-    <rule ref="Squiz.NamingConventions.ValidVariableName"/>
     <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
     <rule ref="Squiz.Scope.MemberVarScope"/>
     <rule ref="Squiz.Scope.MethodScope"/>
-    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
 
     <rule ref="Generic.Files.LineLength">
         <properties>
@@ -57,6 +53,9 @@
     <rule ref="Zend">
         <!-- but exclude their code analyzer -->
         <exclude name="Zend.Debug.CodeAnalyzer"/>
+
+        <!-- covered by Squiz ControlSignature, which enforces try/catch as well -->
+        <exclude name="PEAR.ControlStructures.ControlSignature"/>
     </rule>
 
     <!-- Don't enforce Zend's private member underscores -->
