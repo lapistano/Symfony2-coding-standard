@@ -44,16 +44,6 @@
     <rule ref="Squiz.Scope.MemberVarScope"/>
     <rule ref="Squiz.Scope.MethodScope"/>
 
-    <rule ref="Generic.Files.LineLength">
-        <properties>
-            <property name="lineLimit" value="80"/>
-            <property name="absoluteLineLimit" value="120"/>
-        </properties>
-    </rule>
-    <rule ref="Generic.Files.LineLength.TooLong">
-        <message>Consider breaking lines longer than %s characters; contains %s characters</message>
-    </rule>
-
     <!-- Import Zend coding standard (which in turn imports PEAR) -->
     <rule ref="Zend">
         <!-- but exclude their code analyzer -->
@@ -61,6 +51,9 @@
 
         <!-- covered by Squiz ControlSignature, which enforces try/catch as well -->
         <exclude name="PEAR.ControlStructures.ControlSignature"/>
+
+        <!-- do not check line length -->
+        <exclude name="Generic.Files.LineLength"/>
     </rule>
 
     <!-- Don't enforce Zend's private member underscores -->
