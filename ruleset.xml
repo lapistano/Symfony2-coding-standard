@@ -60,6 +60,11 @@
         <severity>0</severity>
     </rule>
 
+    <!-- Ignore variables that contains numbers -->
+    <rule ref="Zend.NamingConventions.ValidVariableName.ContainsNumbers">
+        <severity>0</severity>
+    </rule>
+
     <!-- In practice, Symfony2 spaces multiline function calls differently than Zend -->
     <rule ref="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">
         <severity>0</severity>
