@@ -42,7 +42,6 @@
     <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
     <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
     <rule ref="Squiz.Scope.MemberVarScope"/>
-    <rule ref="Symfony2.Scope.MethodScope"/>
 
     <!-- Import Zend coding standard (which in turn imports PEAR) -->
     <rule ref="Zend">
