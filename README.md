@@ -6,7 +6,7 @@ Installation
 
 1. Install phpcs:
 
-        pear install PHP_CodeSniffer-beta
+        pear install PHP_CodeSniffer
 
 2. Find your PEAR directory:
 
