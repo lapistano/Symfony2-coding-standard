@@ -43,8 +43,7 @@
     <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
     <rule ref="Squiz.Scope.MemberVarScope"/>
 
-    <!-- We provide our own subclass of PEAR's ClassComment sniff, but these will do: -->
-    <rule ref="PEAR.Commenting.FunctionComment"/>
+    <!-- We provide our own subclass of PEAR's ClassComment and FunctionComment sniff, but these will do: -->
     <rule ref="PEAR.Commenting.InlineComment"/>
 
     <!-- Import Zend coding standard (which in turn imports PEAR) -->
