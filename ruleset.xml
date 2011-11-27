@@ -54,6 +54,8 @@
         <!-- covered by Squiz ControlSignature, which enforces try/catch as well -->
         <exclude name="PEAR.ControlStructures.ControlSignature"/>
 
+        <exclude name="PEAR.Commenting.FunctionComment.SpacingBeforeTags"/>
+
         <!-- do not check line length -->
         <exclude name="Generic.Files.LineLength"/>
     </rule>
@@ -76,4 +78,15 @@
         <severity>0</severity>
     </rule>
 
+    <rule ref="Symfony2.Commenting.FunctionComment.MissingParamComment">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Symfony2.Commenting.FunctionComment.SpacingBeforeTags">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Symfony2.Commenting.ClassComment.SpacingBeforeTags">
+        <message>There should always be a description, followed by a blank line, before the tags of a class comment.</message>
+    </rule>
 </ruleset>
