@@ -13,11 +13,8 @@
 
     # Structure
 
-    * Add a blank line before return statements;
-    * Define one class per file;
     * Declare class properties before methods;
     * Declare public methods first, then protected ones and finally private ones.
-    * Suffix interfaces with Interface;
     * Use namespaces for all classes;
     * Add PHPDoc blocks for all classes, methods, and functions;
     * The @package and @subpackage annotations are not used.
