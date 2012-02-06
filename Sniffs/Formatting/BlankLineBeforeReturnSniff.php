@@ -42,14 +42,15 @@ class Symfony2_Sniffs_Formatting_BlankLineBeforeReturnSniff implements PHP_CodeS
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens         = $phpcsFile->getTokens();
-        $current        = $stackPtr;
-        $previousLine   = $tokens[$stackPtr]['line'] - 1;
-        $prevLineTokens = array();
+        $tokens          = $phpcsFile->getTokens();
+        $current         = $stackPtr;
+        $previousLine    = $tokens[$stackPtr]['line'] - 1;
+        $prevLineTokens  = array();
 
         while ($tokens[$current]['line'] >= $previousLine) {
             if ($tokens[$current]['line'] == $previousLine &&
-                $tokens[$current]['type'] != 'T_WHITESPACE'
+                $tokens[$current]['type'] != 'T_WHITESPACE' &&
+                $tokens[$current]['type'] != 'T_COMMENT'
             ) {
                 $prevLineTokens[] = $tokens[$current]['type'];
             }
@@ -57,7 +58,8 @@ class Symfony2_Sniffs_Formatting_BlankLineBeforeReturnSniff implements PHP_CodeS
         }
 
         if (isset($prevLineTokens[0])
-            && $prevLineTokens[0] == 'T_OPEN_CURLY_BRACKET') {
+            && $prevLineTokens[0] == 'T_OPEN_CURLY_BRACKET'
+        ) {
             return;
         } else if(count($prevLineTokens) > 0) {
             $phpcsFile->addError(
