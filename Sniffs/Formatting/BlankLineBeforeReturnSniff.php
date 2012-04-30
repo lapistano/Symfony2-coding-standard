@@ -49,8 +49,8 @@ class Symfony2_Sniffs_Formatting_BlankLineBeforeReturnSniff implements PHP_CodeS
 
         while ($tokens[$current]['line'] >= $previousLine) {
             if ($tokens[$current]['line'] == $previousLine &&
-                $tokens[$current]['type'] != 'T_WHITESPACE' &&
-                $tokens[$current]['type'] != 'T_COMMENT'
+                $tokens[$current]['type'] !== 'T_WHITESPACE' &&
+                $tokens[$current]['type'] !== 'T_COMMENT'
             ) {
                 $prevLineTokens[] = $tokens[$current]['type'];
             }
@@ -58,7 +58,8 @@ class Symfony2_Sniffs_Formatting_BlankLineBeforeReturnSniff implements PHP_CodeS
         }
 
         if (isset($prevLineTokens[0])
-            && $prevLineTokens[0] == 'T_OPEN_CURLY_BRACKET'
+            && ($prevLineTokens[0] === 'T_OPEN_CURLY_BRACKET'
+            || $prevLineTokens[0] === 'T_COLON')
         ) {
             return;
         } else if(count($prevLineTokens) > 0) {
