@@ -47,7 +47,7 @@ class Symfony2_Sniffs_Formatting_BlankLineBeforeReturnSniff implements PHP_CodeS
         $previousLine    = $tokens[$stackPtr]['line'] - 1;
         $prevLineTokens  = array();
 
-        while ($tokens[$current]['line'] >= $previousLine && $previousLine > 0) {
+        while ($current >= 0 && $tokens[$current]['line'] >= $previousLine) {
             if ($tokens[$current]['line'] == $previousLine &&
                 $tokens[$current]['type'] !== 'T_WHITESPACE' &&
                 $tokens[$current]['type'] !== 'T_COMMENT'
