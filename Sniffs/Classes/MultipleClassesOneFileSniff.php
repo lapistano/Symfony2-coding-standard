@@ -1,13 +1,30 @@
 <?php
 
 /**
+ * This file is part of the Symfony2-coding-standard (phpcs standard)
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Symfony2-phpcs-authors <Symfony2-coding-standard@opensky.github.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @version  GIT: master
+ * @link     https://github.com/opensky/Symfony2-coding-standard
+ */
+
+/**
  * Symfony2_Sniffs_Classes_MultipleClassesOneFileSniff.
  *
  * Throws errors if multiple classes are defined in a single file.
  *
  * Symfony coding standard specifies: "Define one class per file;"
  *
- * @author Dave Hauenstein <davehauenstein@gmail.com>
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Dave Hauenstein <davehauenstein@gmail.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @link     https://github.com/opensky/Symfony2-coding-standard
  */
 class Symfony2_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSniffer_Sniff
 {
@@ -16,14 +33,14 @@ class Symfony2_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSni
      *
      * @var int
      */
-    protected $_classCount = 0;
+    protected $classCount = 0;
 
     /**
      * The current file this class is operating on.
      *
      * @var string
      */
-    protected $_currentFile;
+    protected $currentFile;
 
     /**
      * A list of tokenizers this sniff supports.
@@ -55,14 +72,14 @@ class Symfony2_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        if ($this->_currentFile !== $phpcsFile->getFilename()) {
-            $this->_classCount  = 0;
-            $this->_currentFile = $phpcsFile->getFilename();
+        if ($this->currentFile !== $phpcsFile->getFilename()) {
+            $this->classCount  = 0;
+            $this->currentFile = $phpcsFile->getFilename();
         }
 
-        $this->_classCount++;
+        $this->classCount++;
 
-        if ($this->_classCount > 1) {
+        if ($this->classCount > 1) {
             $phpcsFile->addError(
                 'Multiple classes defined in a single file',
                 $stackPtr

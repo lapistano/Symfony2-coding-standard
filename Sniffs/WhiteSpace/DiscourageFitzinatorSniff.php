@@ -1,11 +1,27 @@
 <?php
+/**
+ * This file is part of the Symfony2-coding-standard (phpcs standard)
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Symfony2-phpcs-authors <Symfony2-coding-standard@opensky.github.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @version  GIT: master
+ * @link     https://github.com/opensky/Symfony2-coding-standard
+ */
 
 /**
  * Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff.
  *
  * Throws warnings if a file contains trailing whitespace.
  *
- * @author Justin Hileman <justin@shopopensky.com>
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Justin Hileman <justin@shopopensky.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @link     https://github.com/opensky/Symfony2-coding-standard
  */
 class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSniffer_Sniff
 {
@@ -31,7 +47,7 @@ class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSn
     {
         return array(T_WHITESPACE);
 
-    }//end register()
+    }
 
 
     /**
@@ -58,7 +74,6 @@ class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSn
             $phpcsFile->addWarning($warning, $stackPtr);
         }
 
-    }//end process()
+    }
 
-
-}//end class
+}
