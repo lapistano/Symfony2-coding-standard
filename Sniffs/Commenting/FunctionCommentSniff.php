@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file is part of the Symfony2-coding-standard (phpcs standard)
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Symfony2-phpcs-authors <Symfony2-coding-standard@opensky.github.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @version  GIT: master
+ * @link     https://github.com/opensky/Symfony2-coding-standard
+ */
 
 if (class_exists('PEAR_Sniffs_Commenting_FunctionCommentSniff', true) === false) {
     $error = 'Class PEAR_Sniffs_Commenting_FunctionCommentSniff not found';
@@ -10,13 +22,14 @@ if (class_exists('PEAR_Sniffs_Commenting_FunctionCommentSniff', true) === false)
  *
  * Verifies that :
  * <ul>
- *  <li>There is a @return tag iff a return statement exists inside the method</li>
+ *  <li>There is a &#64;return tag if a return statement exists inside the method</li>
  * </ul>
  *
- * @package   PHP_CodeSniffer
- * @author    Felix Brandt <mail@felixbrandt.de>
- * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
- * @link      http://pear.php.net/package/PHP_CodeSniffer
+ * @category PHP
+ * @package  PHP_CodeSniffer
+ * @author   Felix Brandt <mail@felixbrandt.de>
+ * @license  http://spdx.org/licenses/BSD-3-Clause BSD 3-clause "New" or "Revised" License
+ * @link     http://pear.php.net/package/PHP_CodeSniffer
  */
 class Symfony2_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting_FunctionCommentSniff
 {
@@ -94,13 +107,11 @@ class Symfony2_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commen
      */
     protected function isMatchingReturn ($tokens, $returnPos)
     {
-      do {
-        $returnPos++;
-      } while ($tokens[$returnPos]['code'] === T_WHITESPACE);
+        do {
+            $returnPos++;
+        } while ($tokens[$returnPos]['code'] === T_WHITESPACE);
 
-      return $tokens[$returnPos]['code'] !== T_SEMICOLON;
+        return $tokens[$returnPos]['code'] !== T_SEMICOLON;
     }
 
 }//end class
-
-?>

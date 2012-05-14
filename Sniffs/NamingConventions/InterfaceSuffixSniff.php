@@ -1,13 +1,29 @@
 <?php
+/**
+ * This file is part of the Symfony2-coding-standard (phpcs standard)
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Symfony2-phpcs-authors <Symfony2-coding-standard@opensky.github.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @version  GIT: master
+ * @link     https://github.com/opensky/Symfony2-coding-standard
+ */
 
 /**
  * Symfony2_Sniffs_NamingConventions_InterfaceSuffixSniff.
  *
- * Throws errors if interface names aren't suffixed with "Interface".
+ * Throws errors if interface names are not suffixed with "Interface".
  *
  * Symfony coding standard specifies: "Suffix interfaces with Interface;"
  *
- * @author Dave Hauenstein <davehauenstein@gmail.com>
+ * @category PHP
+ * @package  PHP_CodeSniffer-Symfony2
+ * @author   Dave Hauenstein <davehauenstein@gmail.com>
+ * @license  http://spdx.org/licenses/MIT MIT License
+ * @link     https://github.com/opensky/Symfony2-coding-standard
  */
 class Symfony2_Sniffs_NamingConventions_InterfaceSuffixSniff implements PHP_CodeSniffer_Sniff
 {
@@ -41,13 +57,12 @@ class Symfony2_Sniffs_NamingConventions_InterfaceSuffixSniff implements PHP_Code
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $filename = $phpcsFile->getFilename();
         $tokens   = $phpcsFile->getTokens();
         $line     = $tokens[$stackPtr]['line'];
 
         while ($tokens[$stackPtr]['line'] == $line) {
             if ('T_STRING' == $tokens[$stackPtr]['type']) {
-                if(substr($tokens[$stackPtr]['content'], -9) != 'Interface') {
+                if (substr($tokens[$stackPtr]['content'], -9) != 'Interface') {
                     $phpcsFile->addError(
                         'Interface name is not suffixed with "Interface"',
                         $stackPtr
