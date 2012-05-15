@@ -23,7 +23,6 @@
     # Naming Conventions
 
     * Use underscores for option, argument, parameter names;
-    * Use Symfony as the first namespace level;
 
     -->
 
