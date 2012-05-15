@@ -35,6 +35,39 @@ class Symfony2_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commen
 {
 
     /**
+     * Processes this test, when one of its tokens is encountered.
+     *
+     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param int                  $stackPtr  The position of the current token
+     *                                        in the stack passed in $tokens.
+     *
+     * @return void
+     */
+    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    {
+        if (false === $commentEnd = $phpcsFile->findPrevious(array(T_COMMENT, T_DOC_COMMENT, T_CLASS, T_FUNCTION, T_OPEN_TAG), ($stackPtr - 1))) {
+            return;
+        }
+
+        $tokens = $phpcsFile->getTokens();
+        $code = $tokens[$commentEnd]['code'];
+
+        // a comment is not required on protected/private methods
+        $method = $phpcsFile->getMethodProperties($stackPtr);
+        $commentRequired = 'public' == $method['scope'];
+
+        if (
+            ($code === T_COMMENT && !$commentRequired)
+            ||
+            ($code !== T_DOC_COMMENT && !$commentRequired)
+        ) {
+            return;
+        }
+
+        parent::process($phpcsFile, $stackPtr);
+    }
+
+    /**
      * Process the return comment of this function comment.
      *
      * @param int $commentStart The position in the stack where the comment started.
