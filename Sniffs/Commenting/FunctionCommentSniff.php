@@ -56,10 +56,8 @@ class Symfony2_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commen
         $method = $phpcsFile->getMethodProperties($stackPtr);
         $commentRequired = 'public' == $method['scope'];
 
-        if (
-            ($code === T_COMMENT && !$commentRequired)
-            ||
-            ($code !== T_DOC_COMMENT && !$commentRequired)
+        if (($code === T_COMMENT && !$commentRequired)
+            || ($code !== T_DOC_COMMENT && !$commentRequired)
         ) {
             return;
         }
