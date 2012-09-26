@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Symfony2-coding-standard (phpcs standard)
  *
@@ -13,18 +14,33 @@
  */
 
 /**
- * Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff.
+ * Symfony2_Sniffs_Classes_MultipleClassesOneFileSniff.
  *
- * Throws warnings if a file contains trailing whitespace.
+ * Throws errors if multiple classes are defined in a single file.
+ *
+ * Symfony coding standard specifies: "Define one class per file;"
  *
  * @category PHP
  * @package  PHP_CodeSniffer-Symfony2
- * @author   Justin Hileman <justin@shopopensky.com>
+ * @author   Dave Hauenstein <davehauenstein@gmail.com>
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     https://github.com/opensky/Symfony2-coding-standard
  */
-class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSniffer_Sniff
+class Symfony2_Sniffs_Classes_MultipleClassesOneFileSniff implements PHP_CodeSniffer_Sniff
 {
+    /**
+     * The number of times the T_CLASS token is encountered in the file.
+     *
+     * @var int
+     */
+    protected $classCount = 0;
+
+    /**
+     * The current file this class is operating on.
+     *
+     * @var string
+     */
+    protected $currentFile;
 
     /**
      * A list of tokenizers this sniff supports.
@@ -32,11 +48,8 @@ class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSn
      * @var array
      */
     public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                   'CSS',
-                                  );
-
+        'PHP',
+    );
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -45,10 +58,8 @@ class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSn
      */
     public function register()
     {
-        return array(T_WHITESPACE);
-
+        return array(T_CLASS);
     }
-
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -61,19 +72,20 @@ class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSn
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Make sure this is trailing whitespace.
-        $line = $tokens[$stackPtr]['line'];
-        if (($stackPtr < count($tokens) - 1) && $tokens[($stackPtr + 1)]['line'] === $line) {
-            return;
+        if ($this->currentFile !== $phpcsFile->getFilename()) {
+            $this->classCount  = 0;
+            $this->currentFile = $phpcsFile->getFilename();
         }
 
-        if (strpos($tokens[$stackPtr]['content'], "\n") > 0 || strpos($tokens[$stackPtr]['content'], "\r") > 0) {
-            $warning = 'Please trim any trailing whitespace';
-            $phpcsFile->addWarning($warning, $stackPtr);
+        $this->classCount++;
+
+        if ($this->classCount > 1) {
+            $phpcsFile->addError(
+                'Multiple classes defined in a single file',
+                $stackPtr
+            );
         }
 
+        return;
     }
-
 }
