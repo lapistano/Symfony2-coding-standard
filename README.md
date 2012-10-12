@@ -46,9 +46,3 @@ To check the coding standard, run from the Symfony2-coding-standard source root:
 The unit-tests are run from within the PHP_CodeSniffer directory:
 
     $ phpunit --filter Symfony2_* tests/AllTests.php
-
-
-Testing
--------
-
-pushing via https ... 
